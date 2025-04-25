@@ -52,15 +52,11 @@ while True:
   a = ["SpaceX", "Nasa"]
   r = random.choice(a)
   if r == "SpaceX":
-      get_spacex_pictures()
-      send_pictures(tg_token, tg_chat_id, ["SpaceX_pictures/SpaceX1.jpeg","SpaceX_pictures/SpaceX0.jpeg"], "Hello")
+      d = get_spacex_pictures()
+      send_pictures(tg_token, tg_chat_id, ["SpaceX_pictures/SpaceX1.jpeg","SpaceX_pictures/SpaceX0.jpeg"], d)
   else:
       get_nasa_pictures(token_nasa)
-      send_pictures(tg_token, tg_chat_id, ["SpaceX_pictures/SpaceX1.jpeg","SpaceX_pictures/SpaceX0.jpeg"], "Hello")
+      send_pictures(tg_token, tg_chat_id, ["SpaceX_pictures/SpaceX1.jpeg","SpaceX_pictures/SpaceX0.jpeg"], "Picture of the day from Nasa")
   
-  sleep(10)
-
-# get_spacex_pictures()
-# get_nasa_pictures(token_nasa)
-
-send_pictures(tg_token, tg_chat_id, ["SpaceX_pictures/SpaceX1.jpeg","SpaceX_pictures/SpaceX0.jpeg"], "Hello")
+  sleep(60)
+  

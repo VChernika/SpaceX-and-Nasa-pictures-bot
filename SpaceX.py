@@ -13,7 +13,9 @@ def get_spacex_pictures():
     for i in a:
         if not i["links"]["flickr_images"]==[]:
             b.append(i)
-    links = random.choice(b)["links"]["flickr_images"]
+    launch = random.choice(b)
+    links = launch["links"]["flickr_images"]
+    description = launch["details"]
     count = 0
     for i in links:
         picture_response = requests.get(i)
@@ -21,3 +23,6 @@ def get_spacex_pictures():
         with open(f'SpaceX_pictures/SpaceX{count}.jpeg', "wb") as file:
             file.write(picture_response.content)
             count = count+1
+
+    return description
+
