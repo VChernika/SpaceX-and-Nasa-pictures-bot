@@ -1,14 +1,13 @@
 import requests
-from pprint import pprint
 
 
 def get_nasa_pictures(token):
-    Nasa_url = "https://api.nasa.gov/planetary/apod"
+    nasa_url = "https://api.nasa.gov/planetary/apod"
     params_Nasa = {
         "api_key": token,
         "count": 10,
     }
-    response = requests.get(Nasa_url, params=params_Nasa)
+    response = requests.get(nasa_url, params=params_Nasa)
     response.raise_for_status()
     count = 0
     for i in response.json():

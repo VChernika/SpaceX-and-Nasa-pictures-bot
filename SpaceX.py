@@ -5,15 +5,15 @@ import random
 
 
 def get_spacex_pictures():
-    SpaceX_url = "https://api.spacexdata.com/v3/launches"
-    response = requests.get(SpaceX_url)
+    spaceX_url = "https://api.spacexdata.com/v3/launches"
+    response = requests.get(spaceX_url)
     response.raise_for_status()
-    a = response.json()
-    b = []
-    for i in a:
+    json_response = response.json()
+    launches = []
+    for i in json_response:
         if not i["links"]["flickr_images"]==[]:
-            b.append(i)
-    launch = random.choice(b)
+            launches.append(i)
+    launch = random.choice(json_response)
     links = launch["links"]["flickr_images"]
     description = launch["details"]
     count = 0
