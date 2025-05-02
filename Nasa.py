@@ -5,7 +5,7 @@ def get_nasa_pictures(token):
     nasa_url = "https://api.nasa.gov/planetary/apod"
     params_Nasa = {
         "api_key": token,
-        "count": 10,
+        "count": 3,
     }
     response = requests.get(nasa_url, params=params_Nasa)
     response.raise_for_status()
