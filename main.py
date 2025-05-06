@@ -29,12 +29,34 @@ while True:
   services = ["SpaceX", "Nasa"]
   random_sending = random.choice(services)
   if random_sending == "SpaceX":
-      description = get_spacex_pictures()
+      try:
+        description = get_spacex_pictures()
+      except:
+         print("Error by geting SpaceX pictures")
+         continue
+      
       picture_paths = [f"SpaceX_pictures/{file_name}" for file_name in os.listdir("SpaceX_pictures")]
-      send_pictures(tg_token, tg_chat_id, picture_paths, description)
+      
+      try:
+        send_pictures(tg_token, tg_chat_id, picture_paths, description)
+      except:
+         print("Error by sending SpaceX pictures to Telegram")
+         continue
+    
+         
   else:
-      get_nasa_pictures(token_nasa)
+      try:
+        get_nasa_pictures(token_nasa)
+      except:
+        print("Error by geting Nasa pictures")
+        continue
+      
       picture_paths = [f"Nasa_pictures/{file_name}" for file_name in os.listdir("Nasa_pictures")]
-      send_pictures(tg_token, tg_chat_id, picture_paths, "Pictures of the day from Nasa")
+
+      try:
+        send_pictures(tg_token, tg_chat_id, picture_paths, "Pictures of the day from Nasa")
+      except:
+        print("Error by sending Nasa pictures to Telegram")
+        continue
   
   sleep(60)
