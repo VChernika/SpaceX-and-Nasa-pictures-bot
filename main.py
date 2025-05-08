@@ -3,10 +3,13 @@ import shutil
 import random
 from time import sleep
 
+from termcolor import cprint
+
 from SpaceX import get_spacex_pictures
 from Nasa import get_nasa_pictures
 from config import *
 from tg_bot import *
+
 
 
 
@@ -32,7 +35,7 @@ while True:
       try:
         description = get_spacex_pictures()
       except:
-         print("Error by geting SpaceX pictures")
+         cprint("ERROR BY GETING SPACEX PICTURES", "red")
          continue
       
       picture_paths = [f"SpaceX_pictures/{file_name}" for file_name in os.listdir("SpaceX_pictures")]
@@ -40,7 +43,7 @@ while True:
       try:
         send_pictures(tg_token, tg_chat_id, picture_paths, description)
       except:
-         print("Error by sending SpaceX pictures to Telegram")
+         cprint("ERROR BY SENDING SPACEX PICTURES TO TELEGRAM", "red")
          continue
     
          
@@ -48,7 +51,7 @@ while True:
       try:
         get_nasa_pictures(token_nasa)
       except:
-        print("Error by geting Nasa pictures")
+        cprint("ERROR BY GETING NASA PICTURES", "red")
         continue
       
       picture_paths = [f"Nasa_pictures/{file_name}" for file_name in os.listdir("Nasa_pictures")]
@@ -56,7 +59,7 @@ while True:
       try:
         send_pictures(tg_token, tg_chat_id, picture_paths, "Pictures of the day from Nasa")
       except:
-        print("Error by sending Nasa pictures to Telegram")
+        cprint("ERROR BY SENDING NASA PICTURES TO TELEGRAM", "red")
         continue
   
-  sleep(60)
+  sleep(delay)
